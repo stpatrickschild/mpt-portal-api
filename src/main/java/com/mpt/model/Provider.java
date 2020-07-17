@@ -9,12 +9,12 @@ import javax.persistence.Id;
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String name;
     private String address;
-    private long zip_code;
+    private int zip_code;
 
-    public Provider(String name, String address, long zip_code){
+    public Provider(String name, String address, int zip_code){
         this.name = name;
         this.address = address;
         this.zip_code = zip_code;
@@ -22,11 +22,11 @@ public class Provider {
 
     public Provider(){}
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,15 +46,13 @@ public class Provider {
         this.address = address;
     }
 
-    public long getZip_code() {
+    public int getZip_code() {
         return zip_code;
     }
 
-    public void setZip_code(long zip_code) {
+    public void setZip_code(int zip_code) {
         this.zip_code = zip_code;
     }
-
-
 
 
     @Override
