@@ -25,7 +25,7 @@ public class ProviderController {
 
 
     @GetMapping("/{id}")
-    public Provider getPatient(@PathVariable int id){
+    public Provider getProvider(@PathVariable int id){
         System.out.println("requested Id is " + id);
         return this.providerService.getProvider(id);
     }
