@@ -1,9 +1,9 @@
 package com.mpt.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
+@Entity
 public class Category {
 
     @Id
@@ -11,14 +11,8 @@ public class Category {
     private int id;
     private String name;
     private String description;
-
-
-    public Category(String name, String description){
-        this.name = name;
-        this.description = description;
-    }
-
-    public Category(){}
+    @OneToMany
+    private Set<Procedure> procedureSet;
 
     public int getId() {
         return id;
@@ -40,17 +34,25 @@ public class Category {
         return description;
     }
 
-    public void setDescription(String name) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
+    public Set<Procedure> getProcedureSet() {
+        return procedureSet;
+    }
+
+    public void setProcedureSet(Set<Procedure> procedureSet) {
+        this.procedureSet = procedureSet;
+    }
 
     @Override
     public String toString() {
-        return "Category {" +
+        return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", address='" + description + '\'' +
+                ", description='" + description + '\'' +
+                ", procedureSet=" + procedureSet +
                 '}';
     }
 }

@@ -1,23 +1,20 @@
 package com.mpt.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
 public class Procedure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private Category category;
+    private float inNetworkCost;
+    private float outOfNetworkCost;
 
-    public Procedure(String name, Category category){
-        this.name = name;
-        this.category = category;
-    }
-
-    public Procedure(){}
 
     public int getId() {
         return id;
@@ -35,20 +32,45 @@ public class Procedure {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
+    public float getInNetworkCost() {
+        return inNetworkCost;
     }
 
-    public void setDescription(String name) {
-        this.category = category;
+    public void setInNetworkCost(float inNetworkCost) {
+        this.inNetworkCost = inNetworkCost;
+    }
+
+    public float getOutOfNetworkCost() {
+        return outOfNetworkCost;
+    }
+
+    public void setOutOfNetworkCost(float outOfNetworkCost) {
+        this.outOfNetworkCost = outOfNetworkCost;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Procedure procedure = (Procedure) o;
+        return id == procedure.id &&
+                Float.compare(procedure.inNetworkCost, inNetworkCost) == 0 &&
+                Float.compare(procedure.outOfNetworkCost, outOfNetworkCost) == 0 &&
+                Objects.equals(name, procedure.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, inNetworkCost, outOfNetworkCost);
     }
 
     @Override
     public String toString() {
-        return "Procedure {" +
+        return "Procedure{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", category='" + category.toString() + '\'' +
+                ", inNetworkCost=" + inNetworkCost +
+                ", outOfNetworkCost=" + outOfNetworkCost +
                 '}';
     }
 }

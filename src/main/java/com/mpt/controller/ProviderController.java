@@ -1,8 +1,7 @@
 package com.mpt.controller;
 
-import com.mpt.model.ProcedureCost;
 import com.mpt.model.Provider;
-import com.mpt.service.ProviderService;
+import com.mpt.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +12,11 @@ import java.util.List;
 public class ProviderController {
 
     @Autowired
-    private ProviderService providerService;
+    private ProviderRepository providerRepository;
 
     @GetMapping
     public List<Provider> getAllProviders(){
-        return this.providerService.getAllProviders();
+        return this.providerRepository.findAll();
     }
 
     //Populate all tables with data using a Sql script
@@ -25,35 +24,54 @@ public class ProviderController {
 
 
     @GetMapping("/{id}")
-    public Provider getPatient(@PathVariable int id){
+    public Provider getProvider(@PathVariable int id){
         System.out.println("requested Id is " + id);
-        return this.providerService.getProvider(id);
+        return this.providerRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/{provider_id}/{procedure_id}/{network_Name}")
-    public String getProcedureCost(@PathVariable int provider_id, @PathVariable int procedure_id, @PathVariable String network_Name){
+    @GetMapping("/{provider_id}/categories")
+    public String getCategoriesForProvider(@PathVariable int provider_id){
         System.out.println("provider Id is " + provider_id);
-        System.out.println("procedure_id Id is " + procedure_id);
-        System.out.println("network_Name is " + network_Name);
-        ProcedureCost procedureCost = this.providerService.getProcedureCost(provider_id, procedure_id, network_Name);
-        return String.valueOf(procedureCost.getCost());
+
+
+       Provider p =  getProvider(provider_id);
+       return null;
+
     }
+
+//    @GetMapping("/{provider_id}/procedure/{procedure_id}")
+//    public String getProcedure(@PathVariable int provider_id, @PathVariable int procedure_id) {
+//        System.out.println("provider Id is " + provider_id);
+//        System.out.println("procedure_id Id is " + procedure_id);
+//
+//        return null;
+//    }
+
+//    @GetMapping("/{provider_id}/procedure/{procedure_id}")
+//    public String getProcedure(@PathVariable int provider_id, @PathVariable int procedure_id){
+//        System.out.println("provider Id is " + provider_id);
+//        System.out.println("procedure_id Id is " + procedure_id);
+//
+//        Procedure procedure = this.providerRepository.getProcedureCost(provider_id, procedure_id);
+//        return String.valueOf(procedureCost.getCost());
+//    }
+
 
 //    @PostMapping("/create")
 //    public Provider createProvider(@RequestBody Provider provider){
-//        return this.providerService.createProvider(provider);
+//        return this.providerRepository.createProvider(provider);
 //    }
 //
 //
 //    @DeleteMapping("/delete/{id}")
 //    public void deleteProvider(@PathVariable long id){
 //        System.out.println("requested Id is " + id);
-//        this.providerService.deleteProvider(id);
+//        this.providerRepository.deleteProvider(id);
 //    }
 //
 //    @PutMapping("/update")
 //    public Provider updateProvider(@RequestBody Provider provider){
-//        return this.providerService.updateProvider(provider);
+//        return this.providerRepository.updateProvider(provider);
 //    }
 
 }

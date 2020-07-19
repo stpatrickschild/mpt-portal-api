@@ -1,9 +1,7 @@
 package com.mpt.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Provider {
@@ -13,14 +11,8 @@ public class Provider {
     private String name;
     private String address;
     private int zip_code;
-
-    public Provider(String name, String address, int zip_code){
-        this.name = name;
-        this.address = address;
-        this.zip_code = zip_code;
-    }
-
-    public Provider(){}
+    @OneToMany
+    private Set<Procedure> procedureSet;
 
     public int getId() {
         return id;
@@ -54,14 +46,22 @@ public class Provider {
         this.zip_code = zip_code;
     }
 
+    public Set<Procedure> getProcedureSet() {
+        return procedureSet;
+    }
+
+    public void setProcedureSet(Set<Procedure> procedureSet) {
+        this.procedureSet = procedureSet;
+    }
 
     @Override
     public String toString() {
-        return "Provider {" +
+        return "Provider{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", zip_code='" + zip_code + '\'' +
+                ", zip_code=" + zip_code +
+                ", procedureSet=" + procedureSet +
                 '}';
     }
 }
