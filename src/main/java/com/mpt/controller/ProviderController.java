@@ -38,6 +38,11 @@ public class ProviderController {
         return this.providerService.getCategoriesSupportedByProvider(id);
     }
 
+    @GetMapping("/{id}/category/{category_id}/procedures")
+    public List<Procedure> getProcedures(@PathVariable int id, @PathVariable int category_id){
+        return this.providerService.getCategoriesSupportedByProvider(id, category_id);
+    }
+
     //Create a similar method like ^, that takes a provider_id and a category id and returns a list of Procedures
 
     @GetMapping("/{provider_id}/category/{category_id}/procedure/{procedure_id}")

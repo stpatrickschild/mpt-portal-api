@@ -42,10 +42,13 @@ public class ProviderService {
         critical_care_medicine.setId(2);
         var dermatopathology = new Procedure("Dermatopathology", dermatology, bluecross, 50,75, 567);
         dermatopathology.setId(3);
+        var procedural_dermatology = new Procedure("Procedural dermatology", dermatology, bluecross, 85,113, 2200);
+        procedural_dermatology.setId(3);
 
         fakeProcedures.add(cardiovascular_diseases);
         fakeProcedures.add(critical_care_medicine);
         fakeProcedures.add(dermatopathology);
+        fakeProcedures.add(procedural_dermatology);
     }
 
 //    @Autowired
@@ -104,5 +107,12 @@ public class ProviderService {
             return  selectedCategories;
         }
         return null;
+    }
+
+    public List<Procedure> getCategoriesSupportedByProvider(int provider_id, int category_id) {
+        var selectedProcedures  = fakeProcedures.stream().filter(procedure -> procedure.getProvider().getId() == provider_id
+        && procedure.getCategory().getId() == category_id).collect(Collectors.toCollection(() -> new ArrayList<Procedure>()));
+
+        return selectedProcedures;
     }
 }
