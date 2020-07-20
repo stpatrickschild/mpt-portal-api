@@ -1,5 +1,7 @@
 package com.mpt.controller;
 
+import com.mpt.model.Category;
+import com.mpt.model.Procedure;
 import com.mpt.model.ProcedureCost;
 import com.mpt.model.Provider;
 import com.mpt.service.ProviderService;
@@ -7,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3004")
 @RestController
 @RequestMapping("/provider")
 public class ProviderController {
@@ -30,13 +32,21 @@ public class ProviderController {
         return this.providerService.getProvider(id);
     }
 
-    @GetMapping("/{provider_id}/{procedure_id}/{network_Name}")
-    public String getProcedureCost(@PathVariable int provider_id, @PathVariable int procedure_id, @PathVariable String network_Name){
+    @GetMapping("/{id}/categories")
+    public List<Category> getCategories(@PathVariable int id){
+        System.out.println("requested Id is " + id);
+        return this.providerService.getCategoriesSupportedByProvider(id);
+    }
+
+    //Create a similar method like ^, that takes a provider_id and a category id and returns a list of Procedures
+
+    @GetMapping("/{provider_id}/category/{category_id}/procedure/{procedure_id}")
+    public Procedure getProcedureCost(@PathVariable int provider_id, @PathVariable int category_id, @PathVariable int procedure_id){
         System.out.println("provider Id is " + provider_id);
+        System.out.println("category_id Id is " + category_id);
         System.out.println("procedure_id Id is " + procedure_id);
-        System.out.println("network_Name is " + network_Name);
-        ProcedureCost procedureCost = this.providerService.getProcedureCost(provider_id, procedure_id, network_Name);
-        return String.valueOf(procedureCost.getCost());
+        Procedure procedure = this.providerService.getProcedureCost(provider_id, category_id, procedure_id);
+        return procedure;
     }
 
 //    @PostMapping("/create")

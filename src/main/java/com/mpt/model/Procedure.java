@@ -11,10 +11,18 @@ public class Procedure {
     private int id;
     private String name;
     private Category category;
+    private Provider provider;
+    private double inNetworkCost;
+    private double outOfNetworkCost;
+    private double unInsuredCost;
 
-    public Procedure(String name, Category category){
+    public Procedure(String name, Category category, Provider provider, double inNetworkCost, double outOfNetworkCost, double unInsuredCost){
         this.name = name;
         this.category = category;
+        this.provider = provider;
+        this.inNetworkCost = inNetworkCost;
+        this.outOfNetworkCost = outOfNetworkCost;
+        this.unInsuredCost = unInsuredCost;
     }
 
     public Procedure(){}
@@ -25,6 +33,38 @@ public class Procedure {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
+    public double getInNetworkCost() {
+        return inNetworkCost;
+    }
+
+    public void setInNetworkCost(double inNetworkCost) {
+        this.inNetworkCost = inNetworkCost;
+    }
+
+    public double getOutOfNetworkCost() {
+        return outOfNetworkCost;
+    }
+
+    public void setOutOfNetworkCost(double outOfNetworkCost) {
+        this.outOfNetworkCost = outOfNetworkCost;
+    }
+
+    public double getUnInsuredCostCost() {
+        return unInsuredCost;
+    }
+
+    public void setUnInsuredCost(double unInsuredCost) {
+        this.unInsuredCost = unInsuredCost;
     }
 
     public String getName() {

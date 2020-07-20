@@ -10,6 +10,7 @@ public class ProcedureCost {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int provider_id;
+    private int category_id;
     private int procedure_id;
     private String network;
     private double cost;
