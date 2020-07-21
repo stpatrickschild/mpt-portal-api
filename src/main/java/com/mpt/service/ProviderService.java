@@ -4,7 +4,6 @@ import com.mpt.model.Provider;
 import com.mpt.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -17,11 +16,7 @@ public class ProviderService {
 //    @Autowired
 //    private ProcedureCostRepository procedureCostRepository;
 
-    //TODO
-    //Create a new repository for Procedure
 
-    //TODO
-    //Create a new repository for Category
 
 //    @Autowired
 //    private RestTemplate restTemplate;

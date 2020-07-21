@@ -21,4 +21,8 @@ public class ProcedureService {
         procedureRepository.save(procedure);
         return procedure;
     }
+
+//    public void deleteProcedure(int id) {this.procedureRepository.deleteById(id);}
+//
+//    public Procedure updateProcedure(Procedure procedure) { return  this.procedureRepository.save(procedure);}
 }

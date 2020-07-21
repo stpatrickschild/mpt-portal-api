@@ -1,7 +1,7 @@
 package com.mpt.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Provider {
@@ -12,13 +12,13 @@ public class Provider {
     private String address;
     private int zip_code;
     @OneToMany
-    private Set<Procedure> procedureSet;
+    private List<Procedure> procedureList;
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void listId(int id) {
         this.id = id;
     }
 
@@ -26,7 +26,7 @@ public class Provider {
         return name;
     }
 
-    public void setName(String name) {
+    public void listName(String name) {
         this.name = name;
     }
 
@@ -34,7 +34,7 @@ public class Provider {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void listAddress(String address) {
         this.address = address;
     }
 
@@ -42,16 +42,16 @@ public class Provider {
         return zip_code;
     }
 
-    public void setZip_code(int zip_code) {
+    public void listZip_code(int zip_code) {
         this.zip_code = zip_code;
     }
 
-    public Set<Procedure> getProcedureSet() {
-        return procedureSet;
+    public List<Procedure> getProcedureList() {
+        return procedureList;
     }
 
-    public void setProcedureSet(Set<Procedure> procedureSet) {
-        this.procedureSet = procedureSet;
+    public void listProcedureList(List<Procedure> procedureList) {
+        this.procedureList = procedureList;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Provider {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", zip_code=" + zip_code +
-                ", procedureSet=" + procedureSet +
+                ", procedureList=" + procedureList +
                 '}';
     }
 }

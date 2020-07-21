@@ -29,5 +29,5 @@ public class CategoryController {
    }
 
 //    @DeleteMapping
-//    @PutMapping
+//    @PutMappin
 }

@@ -1,7 +1,8 @@
 package com.mpt.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 public class Category {
@@ -13,8 +14,9 @@ public class Category {
     @Column(unique = true)
     private String name;
     private String description;
+
     @OneToMany
-    private Set<Procedure> procedureSet;
+    private List<Procedure> procedureList;
 
 
 
@@ -42,12 +44,12 @@ public class Category {
         this.description = description;
     }
 
-    public Set<Procedure> getProcedureSet() {
-        return procedureSet;
+    public List<Procedure> getProcedureSet() {
+        return procedureList;
     }
 
-    public void setProcedureSet(Set<Procedure> procedureSet) {
-        this.procedureSet = procedureSet;
+    public void setProcedureListProcedureList(List<Procedure> procedureList) {
+        this.procedureList = procedureList;
     }
 
     @Override
@@ -56,7 +58,7 @@ public class Category {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", procedureSet=" + procedureSet +
+                ", procedureList=" + procedureList +
                 '}';
     }
 }

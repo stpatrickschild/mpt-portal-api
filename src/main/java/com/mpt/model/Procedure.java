@@ -1,9 +1,9 @@
 package com.mpt.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Procedure {
@@ -11,9 +11,21 @@ public class Procedure {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String name;
-    private float inNetworkCost;
-    private float outOfNetworkCost;
+    private double inNetworkCost;
+    private double outOfNetworkCost;
+    private double uninsuredCost;
+
+
+
+
+
+
+
+
+
+
 
 
     public int getId() {
@@ -32,37 +44,46 @@ public class Procedure {
         this.name = name;
     }
 
-    public float getInNetworkCost() {
+    public double getInNetworkCost() {
         return inNetworkCost;
     }
 
-    public void setInNetworkCost(float inNetworkCost) {
+    public void setInNetworkCost(double inNetworkCost) {
         this.inNetworkCost = inNetworkCost;
     }
 
-    public float getOutOfNetworkCost() {
+    public double getOutOfNetworkCost() {
         return outOfNetworkCost;
     }
 
-    public void setOutOfNetworkCost(float outOfNetworkCost) {
+    public void setOutOfNetworkCost(double outOfNetworkCost) {
         this.outOfNetworkCost = outOfNetworkCost;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Procedure procedure = (Procedure) o;
-        return id == procedure.id &&
-                Float.compare(procedure.inNetworkCost, inNetworkCost) == 0 &&
-                Float.compare(procedure.outOfNetworkCost, outOfNetworkCost) == 0 &&
-                Objects.equals(name, procedure.name);
+    public double getUninsuredCost() {
+        return uninsuredCost;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, inNetworkCost, outOfNetworkCost);
+    public void setUninsuredCost(double uninsuredCost) {
+        this.uninsuredCost = uninsuredCost;
     }
+
+    //comeback to it and look at it
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Procedure procedure = (Procedure) o;
+//        return id == procedure.id &&
+//                Float.compare(procedure.inNetworkCost, inNetworkCost) == 0 &&
+//                Float.compare(procedure.outOfNetworkCost, outOfNetworkCost) == 0 &&
+//                Objects.equals(name, procedure.name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name, inNetworkCost, outOfNetworkCost);
+//    }
 
     @Override
     public String toString() {
@@ -71,6 +92,7 @@ public class Procedure {
                 ", name='" + name + '\'' +
                 ", inNetworkCost=" + inNetworkCost +
                 ", outOfNetworkCost=" + outOfNetworkCost +
+                ", uninsuredCost=" + uninsuredCost +
                 '}';
     }
 }
