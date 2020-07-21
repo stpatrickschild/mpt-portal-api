@@ -12,7 +12,7 @@ public class Provider {
     private String address;
     private int zip_code;
     @OneToMany
-    private List<Procedure> procedureList;
+    private List<Specialty> specialtyList;
 
     public int getId() {
         return id;
@@ -46,12 +46,12 @@ public class Provider {
         this.zip_code = zip_code;
     }
 
-    public List<Procedure> getProcedureList() {
-        return procedureList;
+    public List<Specialty> getSpecialtyList() {
+        return specialtyList;
     }
 
-    public void listProcedureList(List<Procedure> procedureList) {
-        this.procedureList = procedureList;
+    public void listProcedureList(List<Specialty> specialtyList) {
+        this.specialtyList = specialtyList;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Provider {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", zip_code=" + zip_code +
-                ", procedureList=" + procedureList +
+                ", procedureList=" + specialtyList +
                 '}';
     }
 }

@@ -16,7 +16,7 @@ public class Category {
     private String description;
 
     @OneToMany
-    private List<Procedure> procedureList;
+    private List<Specialty> specialtyList;
 
 
 
@@ -44,12 +44,12 @@ public class Category {
         this.description = description;
     }
 
-    public List<Procedure> getProcedureSet() {
-        return procedureList;
+    public List<Specialty> getProcedureSet() {
+        return specialtyList;
     }
 
-    public void setProcedureListProcedureList(List<Procedure> procedureList) {
-        this.procedureList = procedureList;
+    public void setProcedureListProcedureList(List<Specialty> specialtyList) {
+        this.specialtyList = specialtyList;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Category {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", procedureList=" + procedureList +
+                ", procedureList=" + specialtyList +
                 '}';
     }
 }
