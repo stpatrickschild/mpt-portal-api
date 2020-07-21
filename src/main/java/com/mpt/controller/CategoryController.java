@@ -23,8 +23,11 @@ public class CategoryController {
     }
 
 
-//    @GetMapping
-//    @PostMapping
+   @PostMapping("/create")
+    public Category createCategory(@RequestBody Category category) {
+        return this.categoryService.createCategory(category);
+   }
+
 //    @DeleteMapping
 //    @PutMapping
 }

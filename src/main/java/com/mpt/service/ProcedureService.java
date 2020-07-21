@@ -16,4 +16,9 @@ public class ProcedureService {
     public List<Procedure> getAllProcedure() {
         return this.procedureRepository.findAll();
     }
+
+    public Procedure createProcedure(Procedure procedure) {
+        procedureRepository.save(procedure);
+        return procedure;
+    }
 }
