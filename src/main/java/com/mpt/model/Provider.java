@@ -1,5 +1,7 @@
 package com.mpt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,7 +14,8 @@ public class Provider {
     private String address;
     private int zip_code;
 
-    @OneToMany
+    @OneToMany(mappedBy = "provider")
+    @JsonIgnore
     private List<Specialty> specialtyList;
 
     public int getId() {

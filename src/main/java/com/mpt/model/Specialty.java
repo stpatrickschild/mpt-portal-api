@@ -1,5 +1,7 @@
 package com.mpt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Specialty {
     private int id;
 
     private String name;
+
     private double inNetworkCost;
     private double outOfNetworkCost;
     private double uninsuredCost;
@@ -17,7 +20,28 @@ public class Specialty {
 
 
  @ManyToOne
+ @JsonIgnore
  private Provider provider;
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @ManyToOne
+    @JsonIgnore
+ private  Category category;
 
 
 

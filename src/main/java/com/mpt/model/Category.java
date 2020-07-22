@@ -1,5 +1,7 @@
 package com.mpt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,12 +15,19 @@ public class Category {
 
     @Column(unique = true)
     private String name;
+
+    @Column (length = 1000)
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Specialty> specialtyList;
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if  (! (obj instanceof Category)) {return false;}
+       return this.id == ((Category)obj).getId();
+    }
 
     public int getId() {
         return id;
