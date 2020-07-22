@@ -44,11 +44,11 @@ public class Category {
         this.description = description;
     }
 
-    public List<Specialty> getProcedureSet() {
+    public List<Specialty> getSpecialtyList() {
         return specialtyList;
     }
 
-    public void setProcedureListProcedureList(List<Specialty> specialtyList) {
+    public void setSpecialtyList(List<Specialty> specialtyList) {
         this.specialtyList = specialtyList;
     }
 
