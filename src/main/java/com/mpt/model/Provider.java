@@ -11,6 +11,7 @@ public class Provider {
     private String name;
     private String address;
     private int zip_code;
+
     @OneToMany
     private List<Specialty> specialtyList;
 
